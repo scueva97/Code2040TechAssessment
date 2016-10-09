@@ -6,24 +6,18 @@
 //  Copyright © 2016 Sebastian Cueva-Caro. All rights reserved.
 //
 
+import Alamofire
 import UIKit
 
 class ViewController: UIViewController {
 
     
-    @IBOutlet weak var returnLabel: UILabel!
-    @IBOutlet weak var connectButton: UIButton!
+    @IBAction func connectToAPI() {
+        let parameters = ["token": Constants.token, "github": Constants.githubURL]
+        let response = Alamofire.request(Constants.apiURL, method: .post, parameters: parameters)
+        print("Reponse:\n\(response)")
+    }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
 
 }
 
