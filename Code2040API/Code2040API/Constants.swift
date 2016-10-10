@@ -10,10 +10,20 @@ import Foundation
 
 struct Constants {
     
-    static let apiURL = "http://challenge.code2040.org/api/register"
+    static let url = "http://challenge.code2040.org/api/"
     
     static let token = "2697d2385bc219e5ccd2a5229bcf44c5"
     
     static let githubURL = "https://github.com/scueva97/Code2040TechAssessment"
+    
+}
+
+struct Endpoint {
+    
+    static let register = "register"
+    
+    static let reverse = "reverse"
+    
+    static let reverseValidate = "\(reverse)/validate"
     
 }

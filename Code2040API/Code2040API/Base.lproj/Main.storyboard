@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -18,17 +19,40 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4U2-W8-6Zj">
-                                <state key="normal" title="Connect!"/>
-                                <connections>
-                                    <action selector="connectToAPI" destination="BYZ-38-t0r" eventType="touchUpInside" id="a1Q-3v-AG3"/>
-                                </connections>
-                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Uex-p3-rov">
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4U2-W8-6Zj">
+                                        <state key="normal" title="Connect!"/>
+                                        <connections>
+                                            <action selector="connectToAPI" destination="BYZ-38-t0r" eventType="touchUpInside" id="a1Q-3v-AG3"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qyf-L4-KUz" userLabel="Reverse">
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="35" id="x9k-iZ-bON"/>
+                                        </constraints>
+                                        <state key="normal" title="Reverse"/>
+                                        <connections>
+                                            <action selector="reverseString" destination="BYZ-38-t0r" eventType="touchUpInside" id="Dzs-wG-y91"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="Qyf-L4-KUz" firstAttribute="centerX" secondItem="Uex-p3-rov" secondAttribute="centerX" id="5Kq-aE-CQ8"/>
+                                    <constraint firstAttribute="bottom" secondItem="4U2-W8-6Zj" secondAttribute="bottom" constant="50" id="Npg-fg-MJD"/>
+                                    <constraint firstItem="4U2-W8-6Zj" firstAttribute="top" secondItem="Qyf-L4-KUz" secondAttribute="bottom" constant="10" id="RXJ-aj-pEs"/>
+                                    <constraint firstItem="Qyf-L4-KUz" firstAttribute="top" secondItem="Uex-p3-rov" secondAttribute="top" constant="50" id="pgY-zZ-TFL"/>
+                                    <constraint firstItem="4U2-W8-6Zj" firstAttribute="centerX" secondItem="Uex-p3-rov" secondAttribute="centerX" id="vz9-fQ-Gth"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="4U2-W8-6Zj" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="7hp-Wo-Kjc"/>
-                            <constraint firstItem="4U2-W8-6Zj" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="kXR-dR-aW6"/>
+                            <constraint firstItem="Uex-p3-rov" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="D5u-a4-Ve4"/>
+                            <constraint firstItem="Uex-p3-rov" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="220" id="SbH-F3-XYy"/>
+                            <constraint firstItem="Uex-p3-rov" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="51" id="WLe-xM-o03"/>
+                            <constraint firstItem="Uex-p3-rov" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="kaP-RQ-Den"/>
                         </constraints>
                     </view>
                 </viewController>
