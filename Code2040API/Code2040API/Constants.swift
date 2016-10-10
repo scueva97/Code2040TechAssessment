@@ -24,6 +24,10 @@ struct Endpoint {
     
     static let reverse = "reverse"
     
-    static let reverseValidate = "\(reverse)/validate"
+    static let haystack = "haystack"
+    
+    static func validate(_ endpoint: String) -> String {
+        return "\(endpoint)/validate"
+    }
     
 }

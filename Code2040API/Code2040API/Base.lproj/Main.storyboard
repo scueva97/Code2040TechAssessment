@@ -22,27 +22,55 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Uex-p3-rov">
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4U2-W8-6Zj">
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="rfg-Eb-ozT"/>
+                                        </constraints>
                                         <state key="normal" title="Connect!"/>
                                         <connections>
                                             <action selector="connectToAPI" destination="BYZ-38-t0r" eventType="touchUpInside" id="a1Q-3v-AG3"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qyf-L4-KUz" userLabel="Reverse">
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="35" id="x9k-iZ-bON"/>
-                                        </constraints>
                                         <state key="normal" title="Reverse"/>
                                         <connections>
                                             <action selector="reverseString" destination="BYZ-38-t0r" eventType="touchUpInside" id="Dzs-wG-y91"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3dt-UG-Y3n">
+                                        <state key="normal" title="Prefix"/>
+                                        <connections>
+                                            <action selector="prefixStrings" destination="BYZ-38-t0r" eventType="touchUpInside" id="zVZ-ct-zZe"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Iw-yh-4iW">
+                                        <state key="normal" title="Dating"/>
+                                        <connections>
+                                            <action selector="dateAfterInterval:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0e3-pE-h0z"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CYK-nH-iEK">
+                                        <state key="normal" title="Haystack"/>
+                                        <connections>
+                                            <action selector="locateNeedle" destination="BYZ-38-t0r" eventType="touchUpInside" id="nED-pg-GBP"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstItem="7Iw-yh-4iW" firstAttribute="top" secondItem="Uex-p3-rov" secondAttribute="top" constant="30" id="119-Ok-Jn4"/>
+                                    <constraint firstItem="3dt-UG-Y3n" firstAttribute="top" secondItem="7Iw-yh-4iW" secondAttribute="bottom" constant="10" id="2l1-av-IGJ"/>
                                     <constraint firstItem="Qyf-L4-KUz" firstAttribute="centerX" secondItem="Uex-p3-rov" secondAttribute="centerX" id="5Kq-aE-CQ8"/>
-                                    <constraint firstAttribute="bottom" secondItem="4U2-W8-6Zj" secondAttribute="bottom" constant="50" id="Npg-fg-MJD"/>
+                                    <constraint firstItem="CYK-nH-iEK" firstAttribute="top" secondItem="3dt-UG-Y3n" secondAttribute="bottom" constant="10" id="AZm-vR-qRh"/>
+                                    <constraint firstItem="CYK-nH-iEK" firstAttribute="height" secondItem="4U2-W8-6Zj" secondAttribute="height" id="IXI-I1-9bq"/>
+                                    <constraint firstItem="7Iw-yh-4iW" firstAttribute="height" secondItem="4U2-W8-6Zj" secondAttribute="height" id="Ja3-d1-smW"/>
+                                    <constraint firstItem="3dt-UG-Y3n" firstAttribute="height" secondItem="4U2-W8-6Zj" secondAttribute="height" id="KxI-Za-F7o"/>
+                                    <constraint firstAttribute="bottom" secondItem="4U2-W8-6Zj" secondAttribute="bottom" constant="30" id="Npg-fg-MJD"/>
                                     <constraint firstItem="4U2-W8-6Zj" firstAttribute="top" secondItem="Qyf-L4-KUz" secondAttribute="bottom" constant="10" id="RXJ-aj-pEs"/>
-                                    <constraint firstItem="Qyf-L4-KUz" firstAttribute="top" secondItem="Uex-p3-rov" secondAttribute="top" constant="50" id="pgY-zZ-TFL"/>
+                                    <constraint firstItem="Qyf-L4-KUz" firstAttribute="top" secondItem="CYK-nH-iEK" secondAttribute="bottom" constant="10" id="YZN-TB-I8c"/>
+                                    <constraint firstItem="CYK-nH-iEK" firstAttribute="centerX" secondItem="Uex-p3-rov" secondAttribute="centerX" id="dFB-lt-P8x"/>
+                                    <constraint firstItem="Qyf-L4-KUz" firstAttribute="height" secondItem="4U2-W8-6Zj" secondAttribute="height" id="kwt-Uc-CRz"/>
+                                    <constraint firstItem="7Iw-yh-4iW" firstAttribute="centerX" secondItem="Uex-p3-rov" secondAttribute="centerX" id="mSZ-tC-Xwx"/>
+                                    <constraint firstItem="3dt-UG-Y3n" firstAttribute="centerX" secondItem="Uex-p3-rov" secondAttribute="centerX" id="s9h-yt-OFu"/>
                                     <constraint firstItem="4U2-W8-6Zj" firstAttribute="centerX" secondItem="Uex-p3-rov" secondAttribute="centerX" id="vz9-fQ-Gth"/>
                                 </constraints>
                             </view>
@@ -50,7 +78,6 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="Uex-p3-rov" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="D5u-a4-Ve4"/>
-                            <constraint firstItem="Uex-p3-rov" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="220" id="SbH-F3-XYy"/>
                             <constraint firstItem="Uex-p3-rov" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="51" id="WLe-xM-o03"/>
                             <constraint firstItem="Uex-p3-rov" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="kaP-RQ-Den"/>
                         </constraints>
