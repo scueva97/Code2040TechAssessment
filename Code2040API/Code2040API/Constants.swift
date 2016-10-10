@@ -26,6 +26,10 @@ struct Endpoint {
     
     static let haystack = "haystack"
     
+    static let prefix = "prefix"
+    
+    static let dating = "dating"
+    
     static func validate(_ endpoint: String) -> String {
         return "\(endpoint)/validate"
     }

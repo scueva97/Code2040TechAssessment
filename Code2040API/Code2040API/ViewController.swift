@@ -13,33 +13,39 @@ class ViewController: UIViewController {
 
     
     @IBAction func connectToAPI() {
-        let parameters = ["token": Constants.token, "github": Constants.githubURL]
+        let params = ["token": Constants.token, "github": Constants.githubURL]
         let endpoint = Endpoint.register
-        postRequest(endpoint, parameters: parameters) { response in }
+        postRequest(endpoint, parameters: params) { response in }
     }
     
     
     @IBAction func reverseString() {
-        var parameters = ["token": Constants.token]
+        var params = ["token": Constants.token]
         let endpoint = Endpoint.reverse
-        postRequest(endpoint, parameters: parameters) { response in
+        postRequest(endpoint, parameters: params) { response in
             let reversedString = String(response.characters.reversed())
-            parameters["string"] = reversedString
-            self.postRequest(Endpoint.validate(endpoint), parameters: parameters) { response in }
+            params["string"] = reversedString
+            self.postRequest(Endpoint.validate(endpoint), parameters: params) { response in }
         }
     }
     
     
     @IBAction func locateNeedle() {
-        var parameters = ["token": Constants.token]
+        var params = ["token": Constants.token]
         let endpoint = Endpoint.haystack
-        postRequestExpectingJSON(endpoint, parameters: parameters) { response in
+        postRequestExpectingJSON(endpoint, parameters: params) { response in
+            let needle = response["needle"] as! String
+            let haystack = response["haystack"] as! [String]
+            let pos = haystack.index(of: needle)
             
+            params["needle"] = "\(pos != nil ? pos! : -1)"
+            self.postRequest(Endpoint.validate(endpoint), parameters: params) { reponse in }
         }
     }
     
     
     @IBAction func prefixStrings() {
+        
     }
     
     
