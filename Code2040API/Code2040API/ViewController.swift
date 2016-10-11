@@ -24,6 +24,9 @@ class ViewController: UIViewController {
         let endpoint = Endpoint.reverse
         postRequest(endpoint, parameters: params) { response in
             let reversedString = String(response.characters.reversed())
+            
+            print("Reversed: \(reversedString)")
+            
             params["string"] = reversedString
             self.postRequest(Endpoint.validate(endpoint), parameters: params) { response in }
         }
@@ -37,8 +40,11 @@ class ViewController: UIViewController {
             let needle = response["needle"] as! String
             let haystack = response["haystack"] as! [String]
             let pos = haystack.index(of: needle)
+            let index = pos != nil ? pos! : -1
             
-            params["needle"] = "\(pos != nil ? pos! : -1)"
+            print("Needle: \(index)")
+            
+            params["needle"] = "\(index)"
             self.postRequest(Endpoint.validate(endpoint), parameters: params) { reponse in }
         }
     }
@@ -50,17 +56,36 @@ class ViewController: UIViewController {
         postRequestExpectingJSON(endpoint, parameters: params) { response in
             let prefix = response["prefix"] as! String
             let array = response["array"] as! [String]
+            // Filter the elements with the prefix
+            let withoutPrefix = array.filter { !$0.hasPrefix(prefix) }
             
-            let withPrefix = array.filter { !$0.hasPrefix(prefix) }
+            print("Array: \(withoutPrefix)")
             
-            params["array"] = withPrefix
+            params["array"] = withoutPrefix
             self.postRequest(Endpoint.validate(endpoint), parameters: params) { response in }
         }
     }
     
     
     @IBAction func dateAfterInterval(_ sender: UIButton) {
-        
+        var params: [String : Any] = ["token": Constants.token]
+        let endpoint = Endpoint.dating
+        postRequestExpectingJSON(endpoint, parameters: params) { response in
+            // Convert string to date object
+            let datestamp = response["datestamp"] as! String
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss'Z'"
+            let date = dateFormatter.date(from: datestamp)!
+            // Add time intervale to date and convert date object to string
+            let interval = response["interval"] as! Int
+            let newDate = date.addingTimeInterval(TimeInterval(interval))
+            let newDatestamp = dateFormatter.string(from: newDate)
+            
+            print("New Date: \(newDatestamp)")
+            
+            params["datestamp"] = newDatestamp
+            self.postRequest(Endpoint.validate(endpoint), parameters: params) { response in }
+        }
     }
     
     
