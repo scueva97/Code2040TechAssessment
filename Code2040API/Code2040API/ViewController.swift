@@ -45,19 +45,30 @@ class ViewController: UIViewController {
     
     
     @IBAction func prefixStrings() {
-        
+        var params: [String : Any] = ["token": Constants.token]
+        let endpoint = Endpoint.prefix
+        postRequestExpectingJSON(endpoint, parameters: params) { response in
+            let prefix = response["prefix"] as! String
+            let array = response["array"] as! [String]
+            
+            let withPrefix = array.filter { !$0.hasPrefix(prefix) }
+            
+            params["array"] = withPrefix
+            self.postRequest(Endpoint.validate(endpoint), parameters: params) { response in }
+        }
     }
     
     
     @IBAction func dateAfterInterval(_ sender: UIButton) {
+        
     }
     
     
-    func postRequest(_ endpoint: String, parameters: [String : String],
+    func postRequest(_ endpoint: String, parameters: [String : Any],
                      completionHandler: @escaping ((String) -> Void)) {
         
         let url = "\(Constants.url)\(endpoint)"
-        Alamofire.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default).responseString { response in
+        Alamofire.request(url, method: .post, parameters: parameters).responseString { response in
             if let status = response.response?.statusCode {
                 switch(status) {
                 case 200..<300:
@@ -80,11 +91,11 @@ class ViewController: UIViewController {
     
     // For some reason the API returns a string (not JSON object) for single string responses
     // That or there's something I don't understand about Alamofire
-    func postRequestExpectingJSON(_ endpoint: String, parameters: [String : String],
+    func postRequestExpectingJSON(_ endpoint: String, parameters: [String : Any],
                      completionHandler: @escaping ((NSDictionary) -> Void)) {
         
         let url = "\(Constants.url)\(endpoint)"
-        Alamofire.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default).responseJSON { response in
+        Alamofire.request(url, method: .post, parameters: parameters).responseJSON { response in
             if let status = response.response?.statusCode {
                 switch(status) {
                 case 200..<300:
